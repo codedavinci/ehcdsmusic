@@ -23,11 +23,7 @@ ShallowWrapper {
         <div
           className="app-header"
         >
-          <h1
-            className="app-title"
-          >
-            Sproutify
-          </h1>
+          <Logo />
         </div>,
         "children",
       ],
@@ -40,25 +36,18 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": <h1
-            className="app-title"
-          >
-            Sproutify
-          </h1>,
+          "children": <Logo />,
           "className": "app-header",
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "Sproutify",
-            "className": "app-title",
-          },
+          "nodeType": "function",
+          "props": Object {},
           "ref": null,
-          "rendered": "Sproutify",
-          "type": "h1",
+          "rendered": null,
+          "type": [Function],
         },
         "type": "div",
       },
@@ -76,11 +65,7 @@ ShallowWrapper {
           <div
             className="app-header"
           >
-            <h1
-              className="app-title"
-            >
-              Sproutify
-            </h1>
+            <Logo />
           </div>,
           "children",
         ],
@@ -93,25 +78,18 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": <h1
-              className="app-title"
-            >
-              Sproutify
-            </h1>,
+            "children": <Logo />,
             "className": "app-header",
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Sproutify",
-              "className": "app-title",
-            },
+            "nodeType": "function",
+            "props": Object {},
             "ref": null,
-            "rendered": "Sproutify",
-            "type": "h1",
+            "rendered": null,
+            "type": [Function],
           },
           "type": "div",
         },
