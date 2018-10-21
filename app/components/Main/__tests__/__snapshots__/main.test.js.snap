@@ -19,8 +19,10 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <div>
-        APP'LL BE RUNNING HERE
+      "children": <div
+        className="main"
+      >
+        <Search />
       </div>,
     },
     "ref": null,
@@ -29,10 +31,19 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "APP'LL BE RUNNING HERE",
+        "children": <Search />,
+        "className": "main",
       },
       "ref": null,
-      "rendered": "APP'LL BE RUNNING HERE",
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
       "type": "div",
     },
     "type": [Function],
@@ -43,8 +54,10 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <div>
-          APP'LL BE RUNNING HERE
+        "children": <div
+          className="main"
+        >
+          <Search />
         </div>,
       },
       "ref": null,
@@ -53,10 +66,19 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
-          "children": "APP'LL BE RUNNING HERE",
+          "children": <Search />,
+          "className": "main",
         },
         "ref": null,
-        "rendered": "APP'LL BE RUNNING HERE",
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
         "type": "div",
       },
       "type": [Function],

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Layout } from '../Layout'
+import { Search } from '../Search'
 import './main.css'
 
 class Main extends Component {
@@ -10,7 +11,9 @@ class Main extends Component {
   render() {
     return (
       <Layout>
-        <div>APP'LL BE RUNNING HERE</div>
+        <div className="main">
+          <Search />
+        </div>
       </Layout>
     )
   }
