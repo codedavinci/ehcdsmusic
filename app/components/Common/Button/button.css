@@ -1,0 +1,28 @@
+.custom-button {
+  height: 50px;
+  width: 160px;
+  border-radius: 0.3em;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Lato', 'sans-serif';
+  font-weight: 400;
+  font-size: 110%;
+  letter-spacing: 2px;
+  transition: 0.2s ease-in-out;
+  border: 1px solid black;
+}
+
+/* .small {
+  font-size: 100%;
+}
+.tiny {
+  font-size: 80%;
+} */
+
+.custom-button:focus {
+  outline: none;
+}
+
+.custom-button:hover {
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+}

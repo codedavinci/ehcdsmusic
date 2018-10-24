@@ -1,0 +1,30 @@
+.desc-wrapper {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+  background-color: #ecf0f1;
+}
+
+.text {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #2c3e50;
+}
+
+.album {
+  font-size: 1rem;
+}
+
+.artist {
+  font-size: 1.2rem;
+}
+
+.album-description {
+  color: #95a5a6;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+}

@@ -1,0 +1,34 @@
+.banner {
+  /* background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
+  width: 100%;
+  height: 100px;
+  display: flex;
+}
+
+.profile {
+  /* background-color: lightgreen; */
+  flex: 3;
+}
+
+.profile-filters {
+  flex: 1;
+  /* background-color: lightseagreen; */
+}
+
+.profile-name {
+  padding: 28px;
+}
+
+.profile-name span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2c3e50;
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.profile-filters {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
