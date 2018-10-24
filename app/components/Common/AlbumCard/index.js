@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import { AlbumDescription } from '../'
 import { safeGet } from '../../../utils'
 
-import './albumcard.css'
 import { PLACE_HOLDER } from '../../../constants'
+import './albumcard.css'
 
-const AlbumCard = ({ name, popularity, images, album, description }) => {
+const AlbumCard = ({ name, popularity, images, year, genre, styles }) => {
   const image = safeGet([0, 'url'], images) || PLACE_HOLDER
 
   return (
-    <div className={`card`}>
+    <div className="card" style={styles}>
       <Link
         to="/"
         className="card-item"
@@ -19,7 +19,7 @@ const AlbumCard = ({ name, popularity, images, album, description }) => {
           backgroundImage: `url(${image})`,
         }}
       />
-      <AlbumDescription popularity={popularity} album={album} description={description} />
+      <AlbumDescription popularity={popularity} name={name} year={year} genre={genre} />
     </div>
   )
 }

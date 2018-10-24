@@ -16,7 +16,7 @@ class Profile extends Component {
     return (
       <div className="profile-wrapper">
         <ProfileBanner artistId={params.artistId} />
-        <AlbumList />
+        <AlbumList artistId={params.artistId} />
       </div>
     )
   }

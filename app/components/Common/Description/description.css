@@ -16,7 +16,9 @@
 }
 
 .album {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
 }
 
 .artist {
@@ -27,4 +29,16 @@
   color: #95a5a6;
   font-size: 0.75rem;
   letter-spacing: 2px;
+  text-align: center;
+}
+
+.album-bottom-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.album-bottom-wrapper span {
+  font-family: 'Lato';
+  font-size: 0.8em;
 }

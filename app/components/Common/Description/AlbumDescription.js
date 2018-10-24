@@ -2,15 +2,14 @@ import React from 'react'
 import { Ratings } from '../../Ratings'
 import './description.css'
 
-const AlbumDescription = ({
-  album = 'Drake',
-  description = ' I just wanna say that this is crazy yyyyyy :D:DD',
-  popularity,
-}) => (
+const AlbumDescription = ({ name = 'Drake', popularity, year, genre }) => (
   <div className="desc-wrapper">
-    <div className="text album">{album}</div>
-    <p className="album-description ">{description}</p>
-    <Ratings />
+    <span className="text album">{name}</span>
+    <span className="album-description">{genre}</span>
+    <div className="album-bottom-wrapper">
+      <Ratings popularity={popularity} />
+      <span>{new Date(year).getFullYear()}</span>
+    </div>
   </div>
 )
 
