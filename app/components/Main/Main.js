@@ -1,22 +1,93 @@
 import React, { Component } from 'react'
-import { Layout } from '../Layout'
-import { Search } from '../Search'
-import './main.css'
+import queryString from 'query-string'
+import { Route, Redirect, Switch } from 'react-router-dom'
 
-class Main extends Component {
+import { Layout } from '../Layout'
+import { Auth } from '../Auth'
+import { Home } from '../Home'
+import { Profile } from '../Profile'
+import { PrivateRoute, history } from '../Common'
+
+import Spotify from '../../clients/spotify'
+import { safeGet } from '../../utils'
+
+const ArtistContext = React.createContext()
+
+const LoggIn = () => <Redirect to="/login" />
+
+export class MainComponent extends Component {
   state = {
-    msg: 'BOOTSTRAP THE PROJECT',
+    error: '',
+    artists: [],
+    albums: [],
+    token: null,
+    isAuthed: false,
+  }
+
+  componentDidMount() {
+    this.handleAuth()
+  }
+
+  handleAuth = () => {
+    const { history, location } = this.props
+
+    const tokenObj = queryString.parse(location.hash)
+    const token = safeGet(['access_token'], tokenObj)
+
+    if (token) {
+      this.setState({ token, isAuthed: true }, () => {
+        this.spotifyInstance = Spotify({ token })
+        history.push('/')
+      })
+    }
+  }
+
+  handleLogout = error => {
+    this.setState({ error, isAuthed: false })
+  }
+
+  handleSearch = async name => {
+    const artists = await this.spotifyInstance.searchArtists(name).catch(this.handleLogout)
+    this.setState({ artists })
+  }
+
+  handleAlbums = async artistId => {
+    const albums = await this.spotifyInstance.getAlbums(artistId).catch(this.handleLogout)
+    this.setState({ albums })
   }
 
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { isAuthed } = this.state
+
     return (
       <Layout>
-        <div className="main">
-          <Search />
-        </div>
+        <ArtistContext.Provider value={this.state}>
+          <Switch>
+            <Route path="/login" component={Auth} />
+            <Route
+              exact
+              path="/"
+              render={() => {
+                return isAuthed ? <Home handleSearch={this.handleSearch} /> : <LoggIn />
+              }}
+            />
+            <Route
+              path="/:artistId"
+              render={({ match }) => {
+                return isAuthed ? (
+                  <Profile handleAlbums={this.handleAlbums} {...match} />
+                ) : (
+                  <LoggIn />
+                )
+              }}
+            />
+            <Route render={() => <Redirect to="/" />} />
+          </Switch>
+        </ArtistContext.Provider>
       </Layout>
     )
   }
 }
 
-export default Main
+export const ArtistConsumer = ArtistContext.Consumer
