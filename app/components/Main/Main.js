@@ -8,7 +8,7 @@ import { Home } from '../Home'
 import { Profile } from '../Profile'
 
 import Spotify from '../../clients/spotify'
-import { safeGet } from '../../utils'
+import { safeGet, delayRequest } from '../../utils'
 
 const ArtistContext = React.createContext()
 
@@ -20,6 +20,7 @@ export class MainComponent extends Component {
     artists: [],
     albums: [],
     token: null,
+    isFetching: false,
     isAuthed: false,
   }
 
@@ -46,13 +47,21 @@ export class MainComponent extends Component {
   }
 
   handleSearch = async name => {
+    this.setState({ isFetching: true })
+
+    await delayRequest(2000)
     const artists = await this.spotify.searchArtists(name).catch(this.handleLogout)
-    this.setState({ artists })
+
+    this.setState({ artists, isFetching: false })
   }
 
   handleAlbums = async artistId => {
+    this.setState({ isFetching: true })
+
+    await delayRequest(1000)
     const albums = await this.spotify.getAlbums(artistId).catch(this.handleLogout)
-    this.setState({ albums })
+
+    this.setState({ albums, isFetching: false })
   }
 
   render() {
