@@ -4,16 +4,16 @@ import { Button } from '../'
 
 import './profilebanner.css'
 
-import { RandomColor } from '../../../utils'
+import { randomColor } from '../../../utils'
 import { getArtistByIdSelector } from '../../../selectors'
 import { PLACE_HOLDER } from '../../../constants'
 
 const ProfileBanner = ({ artists, artistId }) => {
   const artist = getArtistByIdSelector(artists, artistId)
   const banner = artist.images[0] || PLACE_HOLDER
-  console.log('get random ', RandomColor())
+  console.log('get random ', randomColor())
 
-  let setGradient = `linear-gradient(-20deg, ${RandomColor()} 0%, #fbfcdb  100%)`
+  let setGradient = `linear-gradient(-20deg, ${randomColor()} 0%, #fbfcdb  100%)`
 
   return (
     <div className="banner" style={{ backgroundImage: setGradient }}>

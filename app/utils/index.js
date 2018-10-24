@@ -1,7 +1,7 @@
 export const safeGet = (args, ret) =>
   args.reduce((acc, val) => (acc && acc[val] ? acc[val] : null), ret)
 
-export const RandomColor = () => {
+export const randomColor = () => {
   let letters = '0123456789ABCDEF'
   let hex = '#'
   for (var i = 0; i < 6; i++) {
@@ -10,3 +10,5 @@ export const RandomColor = () => {
 
   return hex
 }
+
+export const delayRequest = ms => new Promise(r => setTimeout(r, ms))
