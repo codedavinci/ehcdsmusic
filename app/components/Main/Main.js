@@ -6,14 +6,13 @@ import { Layout } from '../Layout'
 import { Auth } from '../Auth'
 import { Home } from '../Home'
 import { Profile } from '../Profile'
-import { PrivateRoute, history } from '../Common'
 
 import Spotify from '../../clients/spotify'
 import { safeGet } from '../../utils'
 
 const ArtistContext = React.createContext()
 
-const LoggIn = () => <Redirect to="/login" />
+const Login = () => <Redirect to="/login" />
 
 export class MainComponent extends Component {
   state = {
@@ -36,7 +35,7 @@ export class MainComponent extends Component {
 
     if (token) {
       this.setState({ token, isAuthed: true }, () => {
-        this.spotifyInstance = Spotify({ token })
+        this.spotify = Spotify({ token })
         history.push('/')
       })
     }
@@ -47,17 +46,16 @@ export class MainComponent extends Component {
   }
 
   handleSearch = async name => {
-    const artists = await this.spotifyInstance.searchArtists(name).catch(this.handleLogout)
+    const artists = await this.spotify.searchArtists(name).catch(this.handleLogout)
     this.setState({ artists })
   }
 
   handleAlbums = async artistId => {
-    const albums = await this.spotifyInstance.getAlbums(artistId).catch(this.handleLogout)
+    const albums = await this.spotify.getAlbums(artistId).catch(this.handleLogout)
     this.setState({ albums })
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } }
     const { isAuthed } = this.state
 
     return (
@@ -69,7 +67,7 @@ export class MainComponent extends Component {
               exact
               path="/"
               render={() => {
-                return isAuthed ? <Home handleSearch={this.handleSearch} /> : <LoggIn />
+                return isAuthed ? <Home handleSearch={this.handleSearch} /> : <Login />
               }}
             />
             <Route
@@ -78,7 +76,7 @@ export class MainComponent extends Component {
                 return isAuthed ? (
                   <Profile handleAlbums={this.handleAlbums} {...match} />
                 ) : (
-                  <LoggIn />
+                  <Login />
                 )
               }}
             />
