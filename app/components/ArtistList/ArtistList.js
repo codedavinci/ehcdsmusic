@@ -1,17 +1,21 @@
 import React from 'react'
 import { Spring } from 'react-spring'
 
-import { ArtistCard } from '../Common'
+import { ArtistCard, Loader } from '../Common'
 import './artistlist.css'
 
-const ArtistList = ({ artists }) => {
+const ArtistList = ({ artists, isFetching }) => {
   return (
     <div className="cardlist-wrapper">
-      {artists.map(artist => (
-        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {props => <ArtistCard key={artist.id} styles={props} {...artist} />}
-        </Spring>
-      ))}
+      {isFetching ? (
+        <Loader />
+      ) : (
+        artists.map(artist => (
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+            {props => <ArtistCard key={artist.id} styles={props} {...artist} />}
+          </Spring>
+        ))
+      )}
     </div>
   )
 }
