@@ -7,6 +7,7 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -30,9 +31,18 @@ module.exports = {
       },
     ],
   },
+  stats: {
+    errorDetails: true,
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './app/index.html',
     }),
   ],
+
+  devServer: {
+    port: 3000,
+    historyApiFallback: true,
+  },
 }
