@@ -1,0 +1,40 @@
+.landing {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background-image: linear-gradient(to top, #a7a6cb 0%, #8989ba 52%, #8989ba 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.special-link {
+  border: none;
+  padding: 20px 40px;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 400px;
+  background-color: #1ed760;
+  text-decoration: none;
+  color: #fff;
+  font-size: 28px;
+  font-family: 'Lato';
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.motto {
+  font-size: 70px;
+  color: #fff;
+  letter-spacing: -0.06em;
+}
+
+.phone {
+  font-size: 100px;
+}
