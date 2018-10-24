@@ -6,7 +6,6 @@ import './layout.css'
 const Logo = () => (
   <div>
     <img src={logo} alt="That's the logo" className="app-logo" />
-    <h1 className="app-title">Sproutify</h1>
   </div>
 )
 
