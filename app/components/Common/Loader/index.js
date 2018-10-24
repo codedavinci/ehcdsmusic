@@ -5,7 +5,7 @@ import { Spring } from 'react-spring'
 export default ({ width = 140, height = 170, color = 'black' }) => (
   <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
     {props => (
-      <div style={props}>
+      <div style={{ ...props, paddingTop: 120 }}>
         <svg
           width={width}
           height={height}
