@@ -6,16 +6,23 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
-    "precommit": "pretty-quick --staged && yarn test",
+    "lint": "pretty-quick --staged",
+    "precommit": "yarn lint && yarn test",
     "test": "jest --env=jsdom",
     "test-watch": "jest --env=jsdom --watch"
   },
   "author": "Edivan Silva",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
+    "numeral": "^2.0.6",
     "prop-types": "^15.6.2",
+    "query-string": "^6.2.0",
+    "ramda": "^0.25.0",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-router-dom": "^4.3.1",
+    "react-spring": "^5.9.2"
   },
   "browserslist": [
     ">0.2%",
