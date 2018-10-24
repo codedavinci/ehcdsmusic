@@ -11,8 +11,8 @@ const ArtistList = ({ artists, isFetching }) => {
         <Loader />
       ) : (
         artists.map(artist => (
-          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-            {props => <ArtistCard key={artist.id} styles={props} {...artist} />}
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} key={artist.id}>
+            {props => <ArtistCard styles={props} {...artist} />}
           </Spring>
         ))
       )}

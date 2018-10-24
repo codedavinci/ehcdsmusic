@@ -1,14 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Spring } from 'react-spring'
 
-import { AlbumCard } from '../Common'
+import { AlbumCard, Loader } from '../Common'
+import { getGenreByArtistIdSelector } from '../../selectors'
+
 import './albumlist.css'
 
-const AlbumList = ({ albums, artists }) => {
+const AlbumList = ({ albums, artists, isFetching, artistId }) => {
+  const genre = getGenreByArtistIdSelector(artists, artistId)
+
   return (
     <div className="cardlist-wrapper">
-      {albums.map(album => {
-        return <AlbumCard key={album.id} {...album} />
-      })}
+      {isFetching ? (
+        <Loader />
+      ) : (
+        albums.map(album => (
+          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} key={album.id}>
+            {props => <AlbumCard artist={artistId} styles={props} genre={genre} {...album} />}
+          </Spring>
+        ))
+      )}
     </div>
   )
 }
