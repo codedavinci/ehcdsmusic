@@ -1,6 +1,7 @@
 import { safeGet } from '../utils'
 
-export const getArtistByIdSelector = (artists, id) => artists.find(a => a.id === id)
+export const getArtistByIdSelector = (artists, id) =>
+  artists.find(a => a.id === id)
 
 export const getGenreByArtistIdSelector = (artists, id) => {
   const artist = getArtistByIdSelector(artists, id)
@@ -9,3 +10,5 @@ export const getGenreByArtistIdSelector = (artists, id) => {
 
   return genre
 }
+
+export const getAlbumById = (albums, id) => albums.find(a => a.id === id)
