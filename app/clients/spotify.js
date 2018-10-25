@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { map, applySpec, pipe, path } from 'ramda'
+import { map, applySpec, pipe, path, groupBy, prop } from 'ramda'
 import { safeGet } from '../utils'
 import { API } from '../constants'
 
@@ -25,7 +25,7 @@ const albumsNormalization = albums => {
       name: path(['name']),
       year: path(['release_date']),
       images: path(['images']),
-      tracks: path(['total_tracks']),
+      tracks: path(['tracks']),
     })
   )
 
@@ -69,11 +69,33 @@ class Spotify {
       limit: 30,
     })
 
-    const albums = safeGet(['data', 'items'], res)
+    const albumsList = safeGet(['data', 'items'], res)
 
-    const albs = albumsNormalization(albums)
+    const albumsNormalized = albumsNormalization(albumsList)
 
-    return albs
+    const albums = await Promise.all(
+      albumsNormalized.map(async album => {
+        let tracks = await this.getAlbumsTracks(album.id)
+
+        return { ...album, tracks }
+      })
+    )
+
+    return albums
+  }
+
+  async getAlbumsTracks(albumId) {
+    if (!albumId) {
+      throw new Error('Please, specify an albumId')
+    }
+
+    const res = await this.apiInstance.get(`v1/albums/${albumId}/tracks`, {
+      limit: 30,
+    })
+
+    const tracks = safeGet(['data', 'items'], res)
+
+    return tracks
   }
 }
 
