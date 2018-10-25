@@ -7,19 +7,33 @@ import { safeGet } from '../../../utils'
 import { PLACE_HOLDER } from '../../../constants'
 import './albumcard.css'
 
-const AlbumCard = ({ name, popularity, images, year, genre, styles }) => {
+const AlbumCard = ({
+  id,
+  name,
+  popularity,
+  images,
+  year,
+  genre,
+  styles,
+  artistId,
+}) => {
   const image = safeGet([0, 'url'], images) || PLACE_HOLDER
 
   return (
     <div className="card" style={styles}>
       <Link
-        to="/"
+        to={`/${artistId}/${id}`}
         className="card-item"
         style={{
           backgroundImage: `url(${image})`,
         }}
       />
-      <AlbumDescription popularity={popularity} name={name} year={year} genre={genre} />
+      <AlbumDescription
+        popularity={popularity}
+        name={name}
+        year={year}
+        genre={genre}
+      />
     </div>
   )
 }
