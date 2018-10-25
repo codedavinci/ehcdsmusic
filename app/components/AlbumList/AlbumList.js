@@ -16,7 +16,14 @@ const AlbumList = ({ albums, artists, isFetching, artistId }) => {
       ) : (
         albums.map(album => (
           <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} key={album.id}>
-            {props => <AlbumCard artist={artistId} styles={props} genre={genre} {...album} />}
+            {props => (
+              <AlbumCard
+                artistId={artistId}
+                styles={props}
+                genre={genre}
+                {...album}
+              />
+            )}
           </Spring>
         ))
       )}

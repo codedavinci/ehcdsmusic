@@ -24,7 +24,3 @@ ArtistList.defaultProps = {
   artists: [],
 }
 export default ArtistList
-
-{
-  /* <AlbumCard key={artist.id} images={artist.images} name={artist.name} type="album" /> */
-}
