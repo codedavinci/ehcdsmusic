@@ -50,7 +50,9 @@ export class MainComponent extends Component {
     this.setState({ isFetching: true })
 
     await delayRequest(2000)
-    const artists = await this.spotify.searchArtists(name).catch(this.handleLogout)
+    const artists = await this.spotify
+      .searchArtists(name)
+      .catch(this.handleLogout)
 
     this.setState({ artists, isFetching: false })
   }
@@ -59,7 +61,9 @@ export class MainComponent extends Component {
     this.setState({ isFetching: true })
 
     await delayRequest(1000)
-    const albums = await this.spotify.getAlbums(artistId).catch(this.handleLogout)
+    const albums = await this.spotify
+      .getAlbums(artistId)
+      .catch(this.handleLogout)
 
     this.setState({ albums, isFetching: false })
   }
@@ -76,7 +80,11 @@ export class MainComponent extends Component {
               exact
               path="/"
               render={() => {
-                return isAuthed ? <Home handleSearch={this.handleSearch} /> : <Login />
+                return isAuthed ? (
+                  <Home handleSearch={this.handleSearch} />
+                ) : (
+                  <Login />
+                )
               }}
             />
             <Route
