@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { Ratings } from '../../Ratings'
 import './description.css'
 
@@ -20,5 +22,20 @@ const AlbumDescription = ({
     </div>
   </div>
 )
+
+AlbumDescription.propTypes = {
+  name: PropTypes.string.isRequired,
+  popularity: PropTypes.string,
+  year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  genre: PropTypes.string,
+  artist: PropTypes.object,
+  isNewRelease: PropTypes.bool.isRequired,
+}
+
+AlbumDescription.defaulProps = {
+  genre: '',
+  artist: {},
+  popularity: 0,
+}
 
 export default AlbumDescription

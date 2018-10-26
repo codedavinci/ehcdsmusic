@@ -1,9 +1,10 @@
 import React from 'react'
+
 import { AUTHORIZE_URL } from '../../constants'
 
 import './auth.css'
 
-const Auth = () => (
+export default () => (
   <div className="landing">
     <i className="fas fa-headphones phone" />
     <h1 className="motto">Looking for cool beats?</h1>
@@ -12,5 +13,3 @@ const Auth = () => (
     </a>
   </div>
 )
-
-export default Auth

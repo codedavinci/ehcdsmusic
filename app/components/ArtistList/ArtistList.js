@@ -1,7 +1,9 @@
 import React from 'react'
 import { Spring } from 'react-spring'
+import PropTypes from 'prop-types'
 
 import { ArtistCard, Loader } from '../Common'
+
 import './artistlist.css'
 
 const ArtistList = ({ artists, isFetching }) => {
@@ -20,7 +22,9 @@ const ArtistList = ({ artists, isFetching }) => {
   )
 }
 
-ArtistList.defaultProps = {
-  artists: [],
+ArtistList.propTypes = {
+  artists: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 }
+
 export default ArtistList

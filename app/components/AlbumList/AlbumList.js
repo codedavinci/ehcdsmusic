@@ -1,7 +1,9 @@
 import React from 'react'
 import { Spring } from 'react-spring'
+import PropTypes from 'prop-types'
 
 import { AlbumCard, Loader, Button } from '../Common'
+
 import { getGenreByArtistIdSelector } from '../../selectors'
 import { safeGet } from '../../utils'
 
@@ -47,7 +49,15 @@ const AlbumList = ({
   )
 }
 
+AlbumList.propTypes = {
+  albums: PropTypes.array.isRequired,
+  artists: PropTypes.array,
+  isFetching: PropTypes.bool.isRequired,
+  isNewRelease: PropTypes.bool.isRequired,
+  handleNewRelease: PropTypes.func.isRequired,
+}
+
 AlbumList.defaultProps = {
-  albums: [],
+  artists: [],
 }
 export default AlbumList
