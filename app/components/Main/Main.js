@@ -22,6 +22,7 @@ export class MainComponent extends Component {
     token: null,
     isFetching: false,
     isAuthed: false,
+    isNewRelease: false,
   }
 
   componentDidMount() {
@@ -42,14 +43,14 @@ export class MainComponent extends Component {
     }
   }
 
-  handleLogout = error => {
-    this.setState({ error, isAuthed: false })
-  }
+  handleLogout = error => this.setState({ error, isAuthed: false })
+  handlePage = page => this.setState({ page })
+  handleDefault = () => this.setState({ isNewRelease: false })
 
   handleSearch = async name => {
     this.setState({ isFetching: true })
 
-    await delayRequest(2000)
+    await delayRequest(1500)
     const artists = await this.spotify
       .searchArtists(name)
       .catch(this.handleLogout)
@@ -68,12 +69,21 @@ export class MainComponent extends Component {
     this.setState({ albums, isFetching: false })
   }
 
+  handleNewRelease = async () => {
+    this.setState({ isFetching: true })
+
+    await delayRequest(1000)
+    const albums = await this.spotify.getNewRelease().catch(this.handleLogout)
+
+    this.setState({ albums, isFetching: false, isNewRelease: true })
+  }
+
   render() {
-    const { isAuthed } = this.state
+    const { isAuthed, artists, page } = this.state
 
     return (
-      <Layout>
-        <ArtistContext.Provider value={this.state}>
+      <ArtistContext.Provider value={this.state}>
+        <Layout handleDefault={this.handleDefault}>
           <Switch>
             <Route path="/login" component={Auth} />
             <Route
@@ -91,7 +101,13 @@ export class MainComponent extends Component {
               path="/:artistId"
               render={({ match }) => {
                 return isAuthed ? (
-                  <Profile handleAlbums={this.handleAlbums} {...match} />
+                  <Profile
+                    handleAlbums={this.handleAlbums}
+                    handleDefault={this.handleDefault}
+                    handleNewRelease={this.handleNewRelease}
+                    artists={artists}
+                    {...match}
+                  />
                 ) : (
                   <Login />
                 )
@@ -99,8 +115,8 @@ export class MainComponent extends Component {
             />
             <Route render={() => <Redirect to="/" />} />
           </Switch>
-        </ArtistContext.Provider>
-      </Layout>
+        </Layout>
+      </ArtistContext.Provider>
     )
   }
 }

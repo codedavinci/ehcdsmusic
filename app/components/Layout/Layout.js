@@ -1,18 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import logo from '../../Sproutify.png'
 import './layout.css'
 
-const Logo = () => (
+const Logo = ({ handleDefault }) => (
   <div>
-    <img src={logo} alt="That's the logo" className="app-logo" />
+    <Link to="/" onClick={handleDefault}>
+      <img src={logo} alt="That's the logo" className="app-logo" />
+    </Link>
   </div>
 )
 
-const Layout = ({ children }) => (
+const Layout = ({ children, handleDefault }) => (
   <div className="main-container">
     <div className="app-header">
-      <Logo />
+      <Logo handleDefault={handleDefault} />
     </div>
     {children}
   </div>
