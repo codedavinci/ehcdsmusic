@@ -2,7 +2,7 @@ import React from 'react'
 
 import './ratings.css'
 
-const Ratings = ({ rate }) => {
+const Ratings = ({ popularity }) => {
   return (
     <div className="ratings">
       {[1, 2, 3, 4, 5].map(i => {
