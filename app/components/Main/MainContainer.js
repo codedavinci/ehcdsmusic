@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
 import queryString from 'query-string'
 import { Route, Redirect, Switch } from 'react-router-dom'
 
@@ -14,7 +16,7 @@ const ArtistContext = React.createContext()
 
 const Login = () => <Redirect to="/login" />
 
-export class MainComponent extends Component {
+class MainComponent extends Component {
   state = {
     error: '',
     artists: [],
@@ -120,5 +122,12 @@ export class MainComponent extends Component {
     )
   }
 }
+
+MainComponent.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+}
+
+export default MainComponent
 
 export const ArtistConsumer = ArtistContext.Consumer

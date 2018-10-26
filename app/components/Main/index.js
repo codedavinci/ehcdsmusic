@@ -1,5 +1,6 @@
 import { withRouter } from 'react-router-dom'
-import { MainComponent, ArtistConsumer as p } from './Main'
+import MainComponent, { ArtistConsumer } from './MainContainer'
 
-export const ArtistConsumer = p
-export const Main = withRouter(MainComponent)
+const Main = withRouter(MainComponent)
+
+export { ArtistConsumer, Main }

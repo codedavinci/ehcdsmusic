@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import AlbumList from '../AlbumList'
 import Tracks from '../Tracks'
@@ -19,7 +20,6 @@ class Profile extends Component {
   render() {
     const { params, handleNewRelease, handleDefault, artists } = this.props
 
-    const albumId = safeGet(['albumId'], params)
     const artistId = safeGet(['artistId'], params)
 
     const artist = getArtistByIdSelector(artists, artistId)
@@ -46,5 +46,14 @@ class Profile extends Component {
     )
   }
 }
+
+Profile.propTypes = {
+  params: PropTypes.object.isRequired,
+  handleNewRelease: PropTypes.func.isRequired,
+  handleDefault: PropTypes.func.isRequired,
+  artists: PropTypes.array,
+}
+
+Profile.defaultProps = { artists: [] }
 
 export default Profile

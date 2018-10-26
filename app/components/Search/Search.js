@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import { Button } from '../Common'
 import './search.css'
@@ -25,8 +25,8 @@ const Search = ({ handleSearch }) => {
   )
 }
 
-Search.propType = {
-  onSubmitSearch: PropTypes.func.isRequired,
+Search.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
 }
 
 export default Search

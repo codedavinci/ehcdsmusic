@@ -23,6 +23,7 @@ const Layout = ({ children, handleDefault }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  handleDefault: PropTypes.func.isRequired,
 }
 
 export default Layout

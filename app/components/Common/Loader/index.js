@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Spring } from 'react-spring'
 
-export default ({ width = 140, height = 170, color = 'black' }) => (
+const Loader = ({ width, height, color }) => (
   <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
     {props => (
       <div style={{ ...props, paddingTop: 120 }}>
@@ -60,3 +61,17 @@ export default ({ width = 140, height = 170, color = 'black' }) => (
     )}
   </Spring>
 )
+
+Loader.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  color: PropTypes.string,
+}
+
+Loader.defaultProps = {
+  width: 140,
+  height: 170,
+  color: 'black',
+}
+
+export default Loader

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Spring } from 'react-spring'
+import PropTypes from 'prop-types'
 
 import { getAlbumById } from '../../selectors'
 import { safeGet } from '../../utils'
@@ -48,6 +49,12 @@ const Tracks = ({ albums, match, history }) => {
       </ol>
     </div>
   )
+}
+
+Tracks.PropTypes = {
+  albums: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 export default Tracks

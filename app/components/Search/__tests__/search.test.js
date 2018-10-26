@@ -4,7 +4,7 @@ import Search from '../Search'
 
 describe('<Search />', () => {
   const defaultProps = {
-    onSubmitSearch: noop => noop,
+    onSubmitSearch: jest.mock(),
   }
 
   const doShallow = (overrides = {}) => {

@@ -1,17 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
+import { randomColor } from '../../../utils'
 
 import './profilebanner.css'
 
-import { randomColor } from '../../../utils'
-import { getArtistByIdSelector } from '../../../selectors'
-
-const ProfileBanner = ({
-  name,
-  isNewRelease,
-  handleNewRelease,
-  handleDefault,
-}) => {
+const ProfileBanner = ({ name, isNewRelease, handleDefault }) => {
   let setGradient = `linear-gradient(-20deg, ${randomColor()} 0%, #fbfcdb  100%)`
 
   return (
@@ -31,4 +26,13 @@ const ProfileBanner = ({
   )
 }
 
+ProfileBanner.propTypes = {
+  name: PropTypes.string,
+  isNewRelease: PropTypes.bool.isRequired,
+  handleDefault: PropTypes.func.isRequired,
+}
+
+ProfileBanner.defaultProps = {
+  name: '',
+}
 export default ProfileBanner
