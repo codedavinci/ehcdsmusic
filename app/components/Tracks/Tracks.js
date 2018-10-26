@@ -51,7 +51,7 @@ const Tracks = ({ albums, match, history }) => {
   )
 }
 
-Tracks.PropTypes = {
+Tracks.propTypes = {
   albums: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,

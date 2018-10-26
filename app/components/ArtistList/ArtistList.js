@@ -7,17 +7,15 @@ import { ArtistCard, Loader } from '../Common'
 import './artistlist.css'
 
 const ArtistList = ({ artists, isFetching }) => {
+  const ArtistCards = artists.map(artist => (
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} key={artist.id}>
+      {props => <ArtistCard styles={props} {...artist} />}
+    </Spring>
+  ))
+
   return (
     <div className="cardlist-wrapper">
-      {isFetching ? (
-        <Loader />
-      ) : (
-        artists.map(artist => (
-          <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} key={artist.id}>
-            {props => <ArtistCard styles={props} {...artist} />}
-          </Spring>
-        ))
-      )}
+      {isFetching ? <Loader /> : ArtistCards}
     </div>
   )
 }

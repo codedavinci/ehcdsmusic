@@ -13,7 +13,7 @@ const Ratings = ({ popularity }) => {
   )
 }
 
-Ratings.PropTypes = {
+Ratings.propTypes = {
   popularity: PropTypes.number,
 }
 
