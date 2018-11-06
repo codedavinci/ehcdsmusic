@@ -42,9 +42,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        REDIRECT_URI: JSON.stringify(
-          process.env.REDIRECT_URI || 'http://localhost:3000/'
-        ),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
   ],

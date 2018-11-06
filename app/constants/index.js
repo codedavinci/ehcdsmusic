@@ -4,10 +4,15 @@ export const API = 'https://api.spotify.com'
 export const URL = 'https://accounts.spotify.com/'
 export const PLACE_HOLDER = 'https://bit.ly/2AnkVGy'
 
+const REDIRECT_URI = 'https://sproutify-music.herokuapp.com/'
+// : 'http://localhost:3000/'
+
+console.log(REDIRECT_URI)
+
 export const AUTHORIZE_URL =
   'https://accounts.spotify.com/authorize' +
   '?response_type=token' +
   '&client_id=' +
   SPOTIFY_PUBLIC_ID +
   '&redirect_uri=' +
-  encodeURIComponent(process.env.REDIRECT_URI)
+  encodeURIComponent(REDIRECT_URI)

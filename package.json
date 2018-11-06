@@ -4,7 +4,7 @@
   "description": "Search Artist and music App",
   "main": "index.js",
   "scripts": {
-    "start": "server -s dist",
+    "start": "serve -s dist",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development --open --hot",
     "lint": "pretty-quick --staged",
