@@ -4,8 +4,9 @@
   "description": "Search Artist and music App",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open --hot",
+    "dev": "webpack-dev-server --mode development --open --hot",
     "lint": "pretty-quick --staged",
     "precommit": "yarn lint && yarn test",
     "test": "jest --env=jsdom",
@@ -15,7 +16,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "numeral": "^2.0.6",
+    "path": "^0.12.7",
     "prop-types": "^15.6.2",
     "query-string": "^6.2.0",
     "ramda": "^0.25.0",
