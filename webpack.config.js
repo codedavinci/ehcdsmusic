@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -38,6 +39,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './app/index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        REDIRECT_URI: JSON.stringify(
+          process.env.REDIRECT_URI || 'http://localhost:3000/'
+        ),
+      },
     }),
   ],
 
