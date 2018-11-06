@@ -18,3 +18,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode
+
+
+src/*
+public/*
+dist/static/css/*.map
+dist/static/js/*.map
